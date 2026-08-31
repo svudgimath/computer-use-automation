@@ -1,0 +1,11 @@
+{"seq":1,"ts":"2026-08-30T20:20:11.058Z","stepId":"step-0","action":"navigate","description":"Navigate to the entry point for \"Open a new Savings sub-account for member 10001 with a 250 dollar initial deposit and reach the confirmation screen\".","params":{"memberId":"[REDACTED]","initialDeposit":"[REDACTED]"}}
+{"seq":2,"ts":"2026-08-30T20:20:11.075Z","stepId":"step-1","action":"type","description":"Enter password to sign in","params":{"memberId":"[REDACTED]","initialDeposit":"[REDACTED]"}}
+{"seq":3,"ts":"2026-08-30T20:20:11.102Z","stepId":"step-2","action":"click","description":"Submit sign-in form to proceed","params":{"memberId":"[REDACTED]","initialDeposit":"[REDACTED]"}}
+{"seq":4,"ts":"2026-08-30T20:20:11.151Z","stepId":"step-3","action":"type","description":"Enter the member ID to search for","params":{"memberId":"[REDACTED]","initialDeposit":"[REDACTED]"}}
+{"seq":5,"ts":"2026-08-30T20:20:11.169Z","stepId":"step-4","action":"click","description":"Submit the member search to find member 10001","params":{"memberId":"[REDACTED]","initialDeposit":"[REDACTED]"}}
+{"seq":6,"ts":"2026-08-30T20:20:11.218Z","stepId":"step-5","action":"click","description":"Open sub-account form to create new Savings sub-account","params":{"memberId":"[REDACTED]","initialDeposit":"[REDACTED]"}}
+{"seq":7,"ts":"2026-08-30T20:20:11.284Z","stepId":"step-6","action":"type","description":"Enter the initial deposit amount","params":{"memberId":"[REDACTED]","initialDeposit":"[REDACTED]"}}
+{"seq":8,"ts":"2026-08-30T20:20:11.302Z","stepId":"step-7","action":"click","description":"Proceed to next step (confirmation/review) after entering deposit amount","params":{"memberId":"[REDACTED]","initialDeposit":"[REDACTED]"}}
+{"seq":9,"ts":"2026-08-30T20:20:11.352Z","stepId":"step-8","action":"click","description":"Confirm the review details and submit to open the new Savings sub-account","params":{"memberId":"[REDACTED]","initialDeposit":"[REDACTED]"}}
+{"seq":10,"ts":"2026-08-30T20:20:11.420Z","stepId":"step-9","action":"extract","description":"Capture the new sub-account number for record","params":{"memberId":"[REDACTED]","initialDeposit":"[REDACTED]"}}
+{"seq":11,"ts":"2026-08-30T20:20:11.444Z","stepId":"(final)","action":"success","description":"Success checkpoint met.","outputs":{"accountNumber":"[REDACTED]"}}

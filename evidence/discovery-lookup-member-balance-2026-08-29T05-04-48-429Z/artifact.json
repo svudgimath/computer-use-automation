@@ -1,0 +1,265 @@
+{
+  "schemaVersion": 1,
+  "id": "lookup-member-balance",
+  "version": 1,
+  "name": "Look up member balance",
+  "description": "Looks up a member by ID and reads their savings balance.",
+  "target": {
+    "appId": "community-core-banking",
+    "baseUrl": "http://localhost:4000",
+    "surface": "web"
+  },
+  "inputs": [
+    {
+      "name": "memberId",
+      "type": "string",
+      "required": true,
+      "description": "memberId",
+      "sensitive": true
+    }
+  ],
+  "outputs": [
+    {
+      "name": "savingsBalance",
+      "type": "string",
+      "description": "Capture the savings balance for member 10001",
+      "sensitive": true
+    }
+  ],
+  "steps": [
+    {
+      "stepId": "step-0",
+      "description": "Navigate to the entry point for \"Look up member 10001 and read their savings balance\".",
+      "action": "navigate",
+      "url": "http://localhost:4000/members/search",
+      "risk": "safe",
+      "requiresConfirmation": false
+    },
+    {
+      "stepId": "step-1",
+      "description": "Filling in password for operator login",
+      "action": "type",
+      "locator": {
+        "primary": {
+          "kind": "role",
+          "role": "textbox",
+          "name": "Password",
+          "exact": false
+        },
+        "fallbacks": [
+          {
+            "kind": "text",
+            "text": "Password",
+            "exact": false
+          },
+          {
+            "kind": "css",
+            "selector": "body > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(2) > td:nth-of-type(1) > form:nth-of-type(1) > label:nth-of-type(2) > input:nth-of-type(1)",
+            "fragile": true
+          }
+        ]
+      },
+      "literalValue": "operator123",
+      "risk": "safe",
+      "requiresConfirmation": false
+    },
+    {
+      "stepId": "step-2",
+      "description": "Submit login form to proceed",
+      "action": "click",
+      "locator": {
+        "primary": {
+          "kind": "role",
+          "role": "button",
+          "name": "Sign In",
+          "exact": false
+        },
+        "fallbacks": [
+          {
+            "kind": "text",
+            "text": "Sign In",
+            "exact": false
+          },
+          {
+            "kind": "css",
+            "selector": "body > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(2) > td:nth-of-type(1) > form:nth-of-type(1) > button:nth-of-type(1)",
+            "fragile": true
+          }
+        ]
+      },
+      "checkpoint": {
+        "kind": "urlMatches",
+        "pattern": "^/members/search"
+      },
+      "risk": "safe",
+      "requiresConfirmation": false
+    },
+    {
+      "stepId": "step-3",
+      "description": "Enter member ID to look up",
+      "action": "type",
+      "locator": {
+        "primary": {
+          "kind": "role",
+          "role": "textbox",
+          "name": "Member ID",
+          "exact": false
+        },
+        "fallbacks": [
+          {
+            "kind": "text",
+            "text": "Member ID",
+            "exact": false
+          },
+          {
+            "kind": "css",
+            "selector": "body > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(2) > td:nth-of-type(1) > form:nth-of-type(1) > label:nth-of-type(1) > input:nth-of-type(1)",
+            "fragile": true
+          }
+        ]
+      },
+      "valueParam": "memberId",
+      "risk": "safe",
+      "requiresConfirmation": false
+    },
+    {
+      "stepId": "step-4",
+      "description": "Submit search to look up member 10001",
+      "action": "click",
+      "locator": {
+        "primary": {
+          "kind": "role",
+          "role": "button",
+          "name": "Search",
+          "exact": false
+        },
+        "fallbacks": [
+          {
+            "kind": "text",
+            "text": "Search",
+            "exact": false
+          },
+          {
+            "kind": "css",
+            "selector": "body > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(2) > td:nth-of-type(1) > form:nth-of-type(1) > button:nth-of-type(1)",
+            "fragile": true
+          }
+        ]
+      },
+      "checkpoint": {
+        "kind": "urlMatches",
+        "pattern": "^/members/{{memberId}}"
+      },
+      "risk": "safe",
+      "requiresConfirmation": false
+    },
+    {
+      "stepId": "step-5",
+      "description": "Capture the savings balance for member 10001",
+      "action": "extract",
+      "locator": {
+        "primary": {
+          "kind": "role",
+          "role": "cell",
+          "name": "$2,450.00",
+          "exact": false
+        },
+        "fallbacks": [
+          {
+            "kind": "text",
+            "text": "$2,450.00",
+            "exact": false
+          },
+          {
+            "kind": "css",
+            "selector": "body > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(2) > td:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(5) > td:nth-of-type(2)",
+            "fragile": true
+          }
+        ]
+      },
+      "outputName": "savingsBalance",
+      "risk": "safe",
+      "requiresConfirmation": false
+    }
+  ],
+  "successCheckpoint": {
+    "kind": "textVisible",
+    "text": "Savings Balance {{savingsBalance}}"
+  },
+  "errorHandlers": [
+    {
+      "id": "member-not-found",
+      "when": {
+        "kind": "textVisible",
+        "text": "No member found matching ID"
+      },
+      "classification": "business_outcome",
+      "outcomeName": "member_not_found"
+    },
+    {
+      "id": "permission-denied",
+      "when": {
+        "kind": "textVisible",
+        "text": "Permission denied"
+      },
+      "classification": "business_outcome",
+      "outcomeName": "permission_denied"
+    },
+    {
+      "id": "validation-error-deposit",
+      "when": {
+        "kind": "textVisible",
+        "text": "Initial deposit is required and must be a positive number"
+      },
+      "classification": "business_outcome",
+      "outcomeName": "validation_error"
+    },
+    {
+      "id": "invalid-account-type",
+      "when": {
+        "kind": "textVisible",
+        "text": "Select a valid account type"
+      },
+      "classification": "business_outcome",
+      "outcomeName": "validation_error"
+    },
+    {
+      "id": "session-expired",
+      "when": {
+        "kind": "textVisible",
+        "text": "Your session has expired"
+      },
+      "classification": "recoverable",
+      "recovery": {
+        "kind": "reauthenticate"
+      }
+    },
+    {
+      "id": "http-404-fallback",
+      "when": {
+        "kind": "statusCode",
+        "code": 404
+      },
+      "classification": "business_outcome",
+      "outcomeName": "not_found"
+    },
+    {
+      "id": "http-403-fallback",
+      "when": {
+        "kind": "statusCode",
+        "code": 403
+      },
+      "classification": "business_outcome",
+      "outcomeName": "permission_denied"
+    }
+  ],
+  "risk": {
+    "hasIrreversibleSteps": false,
+    "requiresApproval": false
+  },
+  "provenance": {
+    "discoveryRunId": "discovery-lookup-member-balance-2026-08-29T05-04-48-429Z",
+    "model": "claude-sonnet-5",
+    "recordedAt": "2026-08-29T05:05:01.677Z"
+  }
+}

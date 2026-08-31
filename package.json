@@ -1,0 +1,35 @@
+{
+  "name": "computer-use-automation-system",
+  "version": "0.1.0",
+  "description": "Discover-once, replay-many computer-use automation layer for legacy back-office UIs (interface.ai take-home).",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "target-app": "tsx src/target-app/server.ts",
+    "agent": "tsc -p tsconfig.json && node dist/cli/run.js",
+    "replay": "tsc -p tsconfig.json && node dist/cli/replay.js",
+    "operator": "tsc -p tsconfig.json && node dist/cli/operator.js",
+    "mcp-server": "tsc -p tsconfig.json && node dist/cli/mcpServer.js",
+    "ui": "tsc -p tsconfig.json && node dist/ui/server.js",
+    "mcp-demo": "tsc -p tsconfig.json && node dist/test/mcpClientDemo.js",
+    "test:replay": "tsx src/test/smoke-test.ts",
+    "cross-tenant-demo": "tsx src/test/crossTenantDemo.ts",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.32.1",
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "cookie-parser": "^1.4.7",
+    "express": "^4.21.1",
+    "playwright": "^1.48.2",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/cookie-parser": "^1.4.7",
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.9.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3"
+  }
+}

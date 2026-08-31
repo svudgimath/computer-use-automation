@@ -1,0 +1,7 @@
+{"seq":1,"ts":"2026-08-30T15:15:08.462Z","stepId":"step-0","action":"navigate","description":"Navigate to the entry point for \"Look up member 10001 and read their savings balance\".","params":{"memberId":"[REDACTED]"}}
+{"seq":2,"ts":"2026-08-30T15:15:08.508Z","stepId":"step-1","action":"type","description":"Filling in password for operator login","params":{"memberId":"[REDACTED]"}}
+{"seq":3,"ts":"2026-08-30T15:15:08.591Z","stepId":"step-2","action":"click","description":"Submit login form to proceed","params":{"memberId":"[REDACTED]"}}
+{"seq":4,"ts":"2026-08-30T15:15:09.099Z","stepId":"step-3","action":"type","description":"Enter member ID to look up","params":{"memberId":"[REDACTED]"}}
+{"seq":5,"ts":"2026-08-30T15:15:09.141Z","stepId":"step-4","action":"click","description":"Submit search to look up member 10001","params":{"memberId":"[REDACTED]"}}
+{"seq":6,"ts":"2026-08-30T15:15:09.239Z","stepId":"step-5","action":"extract","description":"Capture the savings balance for member 10001","params":{"memberId":"[REDACTED]"}}
+{"seq":7,"ts":"2026-08-30T15:15:09.314Z","stepId":"(final)","action":"success","description":"Success checkpoint met.","outputs":{"savingsBalance":"[REDACTED]"}}

@@ -1,0 +1,8 @@
+{"seq":1,"ts":"2026-08-30T18:03:16.096Z","stepId":"step-0","action":"navigate","description":"Navigate to the entry point for \"Look up member 10001 and read their savings balance\".","params":{"memberId":"[REDACTED]"}}
+{"seq":2,"ts":"2026-08-30T18:03:16.119Z","stepId":"step-1","action":"type","description":"Filling in password for operator login","params":{"memberId":"[REDACTED]"}}
+{"seq":3,"ts":"2026-08-30T18:03:16.166Z","stepId":"step-2","action":"click","description":"Submit login form to proceed","params":{"memberId":"[REDACTED]"}}
+{"seq":4,"ts":"2026-08-30T18:03:16.238Z","stepId":"step-3","action":"type","description":"Enter member ID to look up","params":{"memberId":"[REDACTED]"}}
+{"seq":5,"ts":"2026-08-30T18:03:16.277Z","stepId":"step-4","action":"click","description":"Submit search to look up member 10001","params":{"memberId":"[REDACTED]"}}
+{"seq":6,"ts":"2026-08-30T18:03:16.337Z","stepId":"step-5","action":"extract","description":"Capture the savings balance for member 10001","params":{"memberId":"[REDACTED]"}}
+{"seq":7,"ts":"2026-08-30T18:03:16.368Z","stepId":"step-5","action":"error_handler_matched","description":"Matched error handler \"member-not-found\" (business_outcome)"}
+{"seq":8,"ts":"2026-08-30T18:03:16.368Z","stepId":"(final)","action":"business_outcome","outcomeName":"member_not_found"}

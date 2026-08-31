@@ -1,0 +1,7 @@
+{"seq":1,"ts":"2026-08-29T05:06:54.717Z","stepId":"step-0","action":"navigate","description":"Navigate to the entry point for \"Open a new Savings sub-account for member 10001 with a 250 dollar initial deposit and reach the confirmation screen\".","params":{"memberId":"[REDACTED]","initialDeposit":"[REDACTED]"}}
+{"seq":2,"ts":"2026-08-29T05:06:54.755Z","stepId":"step-1","action":"type","description":"Enter password to sign in","params":{"memberId":"[REDACTED]","initialDeposit":"[REDACTED]"}}
+{"seq":3,"ts":"2026-08-29T05:06:54.823Z","stepId":"step-2","action":"click","description":"Submit sign-in form to proceed","params":{"memberId":"[REDACTED]","initialDeposit":"[REDACTED]"}}
+{"seq":4,"ts":"2026-08-29T05:06:54.921Z","stepId":"step-3","action":"type","description":"Enter the member ID to search for","params":{"memberId":"[REDACTED]","initialDeposit":"[REDACTED]"}}
+{"seq":5,"ts":"2026-08-29T05:06:54.960Z","stepId":"step-4","action":"click","description":"Submit the member search to find member 10001","params":{"memberId":"[REDACTED]","initialDeposit":"[REDACTED]"}}
+{"seq":6,"ts":"2026-08-29T05:06:55.072Z","stepId":"step-5","action":"click","description":"Open sub-account form to create new Savings sub-account","params":{"memberId":"[REDACTED]","initialDeposit":"[REDACTED]"}}
+{"seq":7,"ts":"2026-08-29T05:06:55.119Z","stepId":"step-5","action":"error_handler_matched","description":"Matched error handler \"restricted-member-inline-warning\" (business_outcome)"}

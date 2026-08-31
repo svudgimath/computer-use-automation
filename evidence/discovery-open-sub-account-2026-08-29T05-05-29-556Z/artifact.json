@@ -1,0 +1,393 @@
+{
+  "schemaVersion": 1,
+  "id": "open-sub-account",
+  "version": 1,
+  "name": "Open sub-account",
+  "description": "Opens a new sub-account for a member and confirms it.",
+  "target": {
+    "appId": "community-core-banking",
+    "baseUrl": "http://localhost:4000",
+    "surface": "web"
+  },
+  "inputs": [
+    {
+      "name": "memberId",
+      "type": "string",
+      "required": true,
+      "description": "memberId",
+      "sensitive": true
+    },
+    {
+      "name": "initialDeposit",
+      "type": "number",
+      "required": true,
+      "description": "initialDeposit",
+      "sensitive": true
+    }
+  ],
+  "outputs": [
+    {
+      "name": "accountNumber",
+      "type": "string",
+      "description": "Capture the new sub-account number for record",
+      "sensitive": true
+    }
+  ],
+  "steps": [
+    {
+      "stepId": "step-0",
+      "description": "Navigate to the entry point for \"Open a new Savings sub-account for member 10001 with a 250 dollar initial deposit and reach the confirmation screen\".",
+      "action": "navigate",
+      "url": "http://localhost:4000/members/search",
+      "risk": "safe",
+      "requiresConfirmation": false
+    },
+    {
+      "stepId": "step-1",
+      "description": "Enter password to sign in",
+      "action": "type",
+      "locator": {
+        "primary": {
+          "kind": "role",
+          "role": "textbox",
+          "name": "Password",
+          "exact": false
+        },
+        "fallbacks": [
+          {
+            "kind": "text",
+            "text": "Password",
+            "exact": false
+          },
+          {
+            "kind": "css",
+            "selector": "body > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(2) > td:nth-of-type(1) > form:nth-of-type(1) > label:nth-of-type(2) > input:nth-of-type(1)",
+            "fragile": true
+          }
+        ]
+      },
+      "literalValue": "operator1",
+      "risk": "safe",
+      "requiresConfirmation": false
+    },
+    {
+      "stepId": "step-2",
+      "description": "Submit sign-in form to proceed",
+      "action": "click",
+      "locator": {
+        "primary": {
+          "kind": "role",
+          "role": "button",
+          "name": "Sign In",
+          "exact": false
+        },
+        "fallbacks": [
+          {
+            "kind": "text",
+            "text": "Sign In",
+            "exact": false
+          },
+          {
+            "kind": "css",
+            "selector": "body > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(2) > td:nth-of-type(1) > form:nth-of-type(1) > button:nth-of-type(1)",
+            "fragile": true
+          }
+        ]
+      },
+      "checkpoint": {
+        "kind": "urlMatches",
+        "pattern": "^/members/search"
+      },
+      "risk": "safe",
+      "requiresConfirmation": false
+    },
+    {
+      "stepId": "step-3",
+      "description": "Enter the member ID to search for",
+      "action": "type",
+      "locator": {
+        "primary": {
+          "kind": "role",
+          "role": "textbox",
+          "name": "Member ID",
+          "exact": false
+        },
+        "fallbacks": [
+          {
+            "kind": "text",
+            "text": "Member ID",
+            "exact": false
+          },
+          {
+            "kind": "css",
+            "selector": "body > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(2) > td:nth-of-type(1) > form:nth-of-type(1) > label:nth-of-type(1) > input:nth-of-type(1)",
+            "fragile": true
+          }
+        ]
+      },
+      "valueParam": "memberId",
+      "risk": "safe",
+      "requiresConfirmation": false
+    },
+    {
+      "stepId": "step-4",
+      "description": "Submit the member search to find member 10001",
+      "action": "click",
+      "locator": {
+        "primary": {
+          "kind": "role",
+          "role": "button",
+          "name": "Search",
+          "exact": false
+        },
+        "fallbacks": [
+          {
+            "kind": "text",
+            "text": "Search",
+            "exact": false
+          },
+          {
+            "kind": "css",
+            "selector": "body > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(2) > td:nth-of-type(1) > form:nth-of-type(1) > button:nth-of-type(1)",
+            "fragile": true
+          }
+        ]
+      },
+      "checkpoint": {
+        "kind": "urlMatches",
+        "pattern": "^/members/{{memberId}}"
+      },
+      "risk": "safe",
+      "requiresConfirmation": false
+    },
+    {
+      "stepId": "step-5",
+      "description": "Open sub-account form to create new Savings sub-account",
+      "action": "click",
+      "locator": {
+        "primary": {
+          "kind": "role",
+          "role": "button",
+          "name": "Open Sub-Account",
+          "exact": false
+        },
+        "fallbacks": [
+          {
+            "kind": "text",
+            "text": "Open Sub-Account",
+            "exact": false
+          },
+          {
+            "kind": "css",
+            "selector": "body > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(2) > td:nth-of-type(1) > form:nth-of-type(1) > button:nth-of-type(1)",
+            "fragile": true
+          }
+        ]
+      },
+      "checkpoint": {
+        "kind": "urlMatches",
+        "pattern": "^/members/{{memberId}}/sub-account/new"
+      },
+      "risk": "safe",
+      "requiresConfirmation": false
+    },
+    {
+      "stepId": "step-6",
+      "description": "Enter the initial deposit amount",
+      "action": "type",
+      "locator": {
+        "primary": {
+          "kind": "role",
+          "role": "textbox",
+          "name": "Initial Deposit (USD)",
+          "exact": false
+        },
+        "fallbacks": [
+          {
+            "kind": "text",
+            "text": "Initial Deposit (USD)",
+            "exact": false
+          },
+          {
+            "kind": "css",
+            "selector": "body > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(2) > td:nth-of-type(1) > form:nth-of-type(1) > label:nth-of-type(2) > input:nth-of-type(1)",
+            "fragile": true
+          }
+        ]
+      },
+      "valueParam": "initialDeposit",
+      "risk": "safe",
+      "requiresConfirmation": false
+    },
+    {
+      "stepId": "step-7",
+      "description": "Proceed to next step (confirmation/review) after entering deposit amount",
+      "action": "click",
+      "locator": {
+        "primary": {
+          "kind": "role",
+          "role": "button",
+          "name": "Continue",
+          "exact": false
+        },
+        "fallbacks": [
+          {
+            "kind": "text",
+            "text": "Continue",
+            "exact": false
+          },
+          {
+            "kind": "css",
+            "selector": "body > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(2) > td:nth-of-type(1) > form:nth-of-type(1) > button:nth-of-type(1)",
+            "fragile": true
+          }
+        ]
+      },
+      "checkpoint": {
+        "kind": "urlMatches",
+        "pattern": "^/members/{{memberId}}/sub-account"
+      },
+      "risk": "safe",
+      "requiresConfirmation": false
+    },
+    {
+      "stepId": "step-8",
+      "description": "Confirm the review details and submit to open the new Savings sub-account",
+      "action": "click",
+      "locator": {
+        "primary": {
+          "kind": "role",
+          "role": "button",
+          "name": "Confirm and Open Account",
+          "exact": false
+        },
+        "fallbacks": [
+          {
+            "kind": "text",
+            "text": "Confirm and Open Account",
+            "exact": false
+          },
+          {
+            "kind": "css",
+            "selector": "body > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(2) > td:nth-of-type(1) > form:nth-of-type(1) > button:nth-of-type(1)",
+            "fragile": true
+          }
+        ]
+      },
+      "checkpoint": {
+        "kind": "urlMatches",
+        "pattern": "^/members/{{memberId}}/sub-account/confirm"
+      },
+      "risk": "irreversible",
+      "requiresConfirmation": true
+    },
+    {
+      "stepId": "step-9",
+      "description": "Capture the new sub-account number for record",
+      "action": "extract",
+      "locator": {
+        "primary": {
+          "kind": "role",
+          "role": "cell",
+          "name": "500005",
+          "exact": false
+        },
+        "fallbacks": [
+          {
+            "kind": "text",
+            "text": "500005",
+            "exact": false
+          },
+          {
+            "kind": "css",
+            "selector": "body > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(2) > td:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(2) > td:nth-of-type(2)",
+            "fragile": true
+          }
+        ]
+      },
+      "outputName": "accountNumber",
+      "risk": "safe",
+      "requiresConfirmation": false
+    }
+  ],
+  "successCheckpoint": {
+    "kind": "textVisible",
+    "text": "Sub-account opened successfully."
+  },
+  "errorHandlers": [
+    {
+      "id": "member-not-found",
+      "when": {
+        "kind": "textVisible",
+        "text": "No member found matching ID"
+      },
+      "classification": "business_outcome",
+      "outcomeName": "member_not_found"
+    },
+    {
+      "id": "permission-denied",
+      "when": {
+        "kind": "textVisible",
+        "text": "Permission denied"
+      },
+      "classification": "business_outcome",
+      "outcomeName": "permission_denied"
+    },
+    {
+      "id": "validation-error-deposit",
+      "when": {
+        "kind": "textVisible",
+        "text": "Initial deposit is required and must be a positive number"
+      },
+      "classification": "business_outcome",
+      "outcomeName": "validation_error"
+    },
+    {
+      "id": "invalid-account-type",
+      "when": {
+        "kind": "textVisible",
+        "text": "Select a valid account type"
+      },
+      "classification": "business_outcome",
+      "outcomeName": "validation_error"
+    },
+    {
+      "id": "session-expired",
+      "when": {
+        "kind": "textVisible",
+        "text": "Your session has expired"
+      },
+      "classification": "recoverable",
+      "recovery": {
+        "kind": "reauthenticate"
+      }
+    },
+    {
+      "id": "http-404-fallback",
+      "when": {
+        "kind": "statusCode",
+        "code": 404
+      },
+      "classification": "business_outcome",
+      "outcomeName": "not_found"
+    },
+    {
+      "id": "http-403-fallback",
+      "when": {
+        "kind": "statusCode",
+        "code": 403
+      },
+      "classification": "business_outcome",
+      "outcomeName": "permission_denied"
+    }
+  ],
+  "risk": {
+    "hasIrreversibleSteps": true,
+    "requiresApproval": true
+  },
+  "provenance": {
+    "discoveryRunId": "discovery-open-sub-account-2026-08-29T05-05-29-556Z",
+    "model": "claude-sonnet-5",
+    "recordedAt": "2026-08-29T05:05:50.662Z"
+  }
+}

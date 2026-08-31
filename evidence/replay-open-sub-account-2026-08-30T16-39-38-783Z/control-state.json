@@ -1,0 +1,12 @@
+{
+  "owner": "agent",
+  "intervention": {
+    "reason": "Irreversible step \"step-8\" (Confirm the review details and submit to open the new Savings sub-account) requires explicit approval.",
+    "goalOrCapability": "open-sub-account v1",
+    "stepContext": "step-8",
+    "currentUrl": "http://localhost:4000/members/10001/sub-account",
+    "screenshotPath": "C:\\Interfaceai\\evidence\\replay-open-sub-account-2026-08-30T16-39-38-783Z\\screenshots\\010-handoff-requested.png",
+    "requestedAt": "2026-08-30T16:39:39.411Z"
+  },
+  "humanActions": []
+}

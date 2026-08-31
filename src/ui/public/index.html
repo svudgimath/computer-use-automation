@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Computer-Use Automation — Dashboard</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header>
+  <h1>Computer-Use Automation System</h1>
+  <div id="health" class="health">checking…</div>
+</header>
+
+<main>
+  <section id="capabilities-section">
+    <h2>Capabilities</h2>
+    <p class="hint">Saved artifacts, discovered once by the agent, replayed here deterministically — no model in the loop.</p>
+    <div id="capabilities" class="cards"></div>
+  </section>
+
+  <section id="discover-section">
+    <h2>Record a new capability</h2>
+    <p class="hint warn">Uses real Anthropic API access and drives a real browser session. Not free, not instant.</p>
+    <form id="discover-form">
+      <label>Goal <textarea name="goal" rows="2" required placeholder="e.g. Look up member 10001 and read their savings balance"></textarea></label>
+      <div class="row">
+        <label>Capability ID <input name="capabilityId" required placeholder="e.g. lookup-member-balance" /></label>
+        <label>Name <input name="name" placeholder="Look up member balance" /></label>
+      </div>
+      <label>Description <input name="description" placeholder="Looks up a member by ID and reads their savings balance." /></label>
+      <button type="submit">Run discovery</button>
+    </form>
+  </section>
+
+  <section id="runs-section">
+    <h2>Runs</h2>
+    <div class="runs-layout">
+      <ul id="runs-list" class="runs-list"></ul>
+      <div id="run-detail" class="run-detail">
+        <p class="hint">Select a run, or trigger one above, to see it here.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="lightbox" class="lightbox hidden">
+  <img id="lightbox-img" src="" alt="screenshot" />
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

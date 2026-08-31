@@ -1,0 +1,5 @@
+{"seq":1,"ts":"2026-08-30T20:19:43.818Z","stepId":"step-0","action":"navigate","description":"Navigate to the entry point for \"Look up member 10001 and read their savings balance\".","params":{"memberId":"[REDACTED]"}}
+{"seq":2,"ts":"2026-08-30T20:19:43.838Z","stepId":"step-1","action":"type","description":"Filling in password for operator login","params":{"memberId":"[REDACTED]"}}
+{"seq":3,"ts":"2026-08-30T20:19:43.866Z","stepId":"step-2","action":"click","description":"Submit login form to proceed","params":{"memberId":"[REDACTED]"}}
+{"seq":4,"ts":"2026-08-30T20:19:43.931Z","stepId":"step-3","action":"type","description":"Enter member ID to look up","params":{"memberId":"[REDACTED]"}}
+{"seq":5,"ts":"2026-08-30T20:19:43.957Z","stepId":"step-3","action":"hard_failure","description":"Could not resolve any of 3 locator strategies to a unique visible element","expected":"action \"type\" to execute without error","observed":"url=http://localhost:4001/members/search bodyText=\"Northgate Credit Union — Staff Portal Member Lookup Account Holder ID Search\""}
